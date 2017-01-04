@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+        <!-- Top Menu -->
+        <menuitem id="menu_import_export" name="Import Export"  sequence="10"/>
+        
+        
+        <!-- 
+            Warehouse 
+            - List down all model related to warehouse
+        -->
+        <menuitem id="menu_import_export_warehouse" name="Warehouse"  sequence="10"
+                parent="menu_import_export"/>
+
+        
+        <!-- Location -->
+        <menuitem id="menu_import_export_stock_location" name="Locations"  sequence="10"
+                parent="menu_import_export_warehouse"
+                action="stock.action_location_form"/>
+        <!-- // Location -->
+        
+        <!-- Product Putaway -->
+        <record id="action_import_export_product_putaway_form" model="ir.actions.act_window">
+            <field name="name">Product Putaway</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.putaway</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_import_export_product_putaway" name="Product Putaway"  sequence="10"
+                parent="menu_import_export_warehouse"
+                action="action_import_export_product_putaway_form"/>
+        <!-- // Location -->
+        
+        
+        
+        <!-- // 
+            Warehouse 
+        -->
+        
+        
+        <!-- 
+            Product
+            - List down all model related to Products
+        -->
+        <menuitem id="menu_import_export_product" name="Products"  sequence="10"
+                parent="menu_import_export"/>
+        
+        <!-- Product Attribute -->
+        <menuitem id="menu_import_export_product_attribute" name="Product Attribute"  sequence="10"
+                parent="menu_import_export_product"
+                action="product.attribute_action"/>
+        <!-- // Product Attribute -->
+        
+        <!-- Product Attribute Value -->
+        <menuitem id="menu_import_export_product_attribute_value" name="Product Attribute Value"  sequence="20"
+                parent="menu_import_export_product"
+                action="product.variants_action"/>
+        <!-- // Product Attribute Value -->
+        
+        <!-- Product Category -->
+        <menuitem id="menu_import_export_product_category" name="Product Category"  sequence="30"
+                parent="menu_import_export_product"
+                action="product.product_category_action_form"/>
+        <!-- // Product Category -->
+        
+        <!-- Product -->
+        <menuitem id="menu_import_export_product_template" name="Product Template"  sequence="50"
+                parent="menu_import_export_product"
+                action="product_variant_csv_import.product_template_special_context_action"/>
+        <!-- // Product -->
+        
+        <!-- // 
+            Product
+        -->
+    </data>
+</openerp>

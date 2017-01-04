@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_sales_order_lines_list_view" model="ir.ui.view">
+            <field name="name">sale.order.line.tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Order Lines" create="false">
+                    <field name="order_id"/>
+                    <field name="state" invisible="1"/>
+                    <field name="th_weight" invisible="1"/>
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="product_uom_qty"/>
+                    <field name="product_uom"/>
+                    <field name="product_uos_qty" groups="product.group_uos" invisible="1"/>
+                    <field name="product_uos" string="UoS" groups="product.group_uos" invisible="1"/>
+                    <field name="price_unit"/>
+                    <field name="tax_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
+                    <field name="discount" groups="sale.group_discount_per_so_line"/>
+                    <field name="price_subtotal" sum="Total"/>
+                    <field name="invoiced"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_sales_order_line_list_view_form" model="ir.actions.act_window">
+            <field name="name">Sales Order Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_id" ref="view_sales_order_lines_list_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_point_of_sale_action_pos_all_sales_lines" name="Sales Order Lines"  sequence="50"
+                parent="base.menu_sales"
+                action="action_sales_order_line_list_view_form"/>
+
+    
+    </data>
+</openerp>

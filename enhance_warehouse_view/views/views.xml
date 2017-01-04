@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+            
+    <record id="view_enhance_warehouse_view_stock_move_tree_inherit" model="ir.ui.view">
+        <field name="name">Stock Move Enhance View</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="name"/>
+            </field>
+            <field name="location_dest_id" position="before">
+                <field name="location_id" groups="stock.group_locations"/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="view_enhance_warehouse_view_stock_picking_tree_inherit" model="ir.ui.view">
+        <field name="name">Stock Picking Enhance View</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="location_dest_id" position="before">
+                <field name="location_id"/>
+            </field>
+        </field>
+    </record>
+    
+    
+    <record id="view_enhance_warehouse_view_stock_history_report_tree_inherit" model="ir.ui.view">
+        <field name="name">Stock Value At Date Enhance View</field>
+        <field name="model">stock.history</field>
+        <field name="inherit_id" ref="stock_account.view_stock_history_report_tree"/>
+        <field name="arch" type="xml">
+            <field name="quantity" position="after">
+                <field name="price_unit_on_quant"/>
+            </field>
+        </field>
+    </record>
+    
+    </data>
+</openerp>
